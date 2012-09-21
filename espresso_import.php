@@ -43,13 +43,13 @@ function espresso_voucher_import() {
 			<ol>
                 <li>I have included a template file <a href="<?php echo ESPRESSO_VOUCHER_PLUGINFULLURL; ?>vouchers.csv">here</a> that I recommend you download and use.  It is very easy to work with it in excel, just remember to save it as a csv and not excel sheet.</li>
                 <li>The file name should be vouchers.csv in order for it to work. I will fix this issue later, I just wanted to get this working first.</li>
-				<li>One final note, you will see that the header row, fist column has a 0 while other rows have a 1.  This tells the upload to ignore rows that have the 0 identifier and only use rows with the 1.</li>
+				<li>One final note, you will see that the header row, first column has a 0 while other rows have a 1.  This tells the upload to ignore rows that have the 0 identifier and only use rows with the 1.</li>
             </ol>
            
             <?php
 			$success_messages = '';
 			$error_messages = '';
-			uploader( 1, array("csv"), 1048576, '../wp-content/uploads/espresso/', $success_messages, $error_messages );
+			voucher_uploader( 1, array("csv"), 1048576, '../wp-content/uploads/espresso/', $success_messages, $error_messages );
             ?>
         </li>
     </ul>
@@ -68,7 +68,7 @@ function espresso_voucher_import() {
   upload_dir = The directory to upload to, make sure this ends with a /
  */
 
-function uploader($num_of_uploads = 1, $file_types_array = array("csv"), $max_file_size = 1048576, $upload_dir = "../wp-content/uploads/espresso/", $success_messages, $error_messages) {
+function voucher_uploader($num_of_uploads = 1, $file_types_array = array("csv"), $max_file_size = 1048576, $upload_dir = "../wp-content/uploads/espresso/", $success_messages, $error_messages) {
 
 	
     if (!is_numeric($max_file_size)) {
